@@ -178,6 +178,11 @@
     scroll-behavior: smooth;
 }
 
+.bodySlider a{
+    text-decoration: none;
+    color: inherit;
+}
+
 .sliderItem{
     width: 350px;
     height: 400px;
@@ -898,9 +903,10 @@
 }
 
 .confirm-content .pay-btn {
+  width: 100%;
   margin-top: 15px;
   padding: 10px 20px;
-  background: #28a745;
+  background: #ff4b2b;
   border: none;
   border-radius: 5px;
   color: white;
@@ -908,7 +914,7 @@
 }
 
 .confirm-content .pay-btn:hover {
-  background: #218838;
+  background: #ff3a1a;
 }
 
 
