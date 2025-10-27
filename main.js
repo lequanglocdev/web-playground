@@ -1,6 +1,5 @@
-
-const slider = document.querySelector('.bodySlider');
-const items = document.querySelectorAll('.sliderItem');
+const slider = document.querySelector(".bodySlider");
+const items = document.querySelectorAll(".sliderItem");
 let index = 0;
 
 // setInterval(() => {
@@ -16,31 +15,30 @@ let index = 0;
 // }, 1000);
 // __________
 
-const itemsMenuIcons = document.querySelectorAll('.menuItem');
+const itemsMenuIcons = document.querySelectorAll(".menuItem");
 
 // Khi click
-itemsMenuIcons.forEach(item => {
-  item.addEventListener('click', () => {
+itemsMenuIcons.forEach((item) => {
+  item.addEventListener("click", () => {
     // Xóa active cũ
-    itemsMenuIcons.forEach(i => i.classList.remove('active'));
+    itemsMenuIcons.forEach((i) => i.classList.remove("active"));
 
     // Thêm active mới
-    item.classList.add('active');
+    item.classList.add("active");
 
     // Lưu lại index vào localStorage
-    localStorage.setItem('activeMenuIndex', [...itemsMenuIcons].indexOf(item));
+    localStorage.setItem("activeMenuIndex", [...itemsMenuIcons].indexOf(item));
   });
 });
 
 // Khi load lại trang
-window.addEventListener('DOMContentLoaded', () => {
-  const activeIndex = localStorage.getItem('activeMenuIndex');
+window.addEventListener("DOMContentLoaded", () => {
+  const activeIndex = localStorage.getItem("activeMenuIndex");
   if (activeIndex !== null) {
-    itemsMenuIcons.forEach(i => i.classList.remove('active'));
-    itemsMenuIcons[activeIndex].classList.add('active');
+    itemsMenuIcons.forEach((i) => i.classList.remove("active"));
+    itemsMenuIcons[activeIndex].classList.add("active");
   }
 });
-
 
 // ======== ELEMENT SELECTOR ========
 const dropdownHeader = document.querySelector(".dropdown-header");
@@ -108,7 +106,9 @@ function renderCalendar(date) {
   });
 
   // Ô trống đầu tháng
-  [...Array(firstDay.getDay())].forEach(() => grid.appendChild(document.createElement("div")));
+  [...Array(firstDay.getDay())].forEach(() =>
+    grid.appendChild(document.createElement("div"))
+  );
 
   const today = new Date(); // ngày hiện tại (so sánh)
   today.setHours(0, 0, 0, 0); // reset giờ để so chính xác
@@ -125,7 +125,10 @@ function renderCalendar(date) {
     }
 
     // Nếu là ngày được chọn
-    if (selectedDate && thisDate.toDateString() === selectedDate.toDateString()) {
+    if (
+      selectedDate &&
+      thisDate.toDateString() === selectedDate.toDateString()
+    ) {
       day.classList.add("selected");
     }
 
@@ -134,24 +137,26 @@ function renderCalendar(date) {
       day.classList.add("disabled");
     } else {
       day.addEventListener("click", () => {
-       const now = new Date();
-  const hour = now.getHours();
-  const minute = now.getMinutes();
+        const now = new Date();
+        const hour = now.getHours();
+        const minute = now.getMinutes();
 
-  console.log("⏰ Giờ hiện tại:", hour, "Phút:", minute); // để kiểm tra trong console
+        if (thisDate.toDateString() === now.toDateString()) {
+          // Chỉ cho đặt từ 9:00 đến 20:00
+          if (hour < 9 || hour > 20 || (hour === 20 && minute > 0)) {
+            alert(
+              "⚠️ Hôm nay chỉ có thể đặt vé trong khung giờ 9:00 - 20:00.\nVui lòng quay lại trong thời gian hoạt động!"
+            );
+            return; // không cho chọn
+          }
+        }
 
-  // ⛔ Kiểm tra giờ hoạt động: chỉ cho chọn từ 9:00 sáng tới 20:00 tối
-  if (hour < 9 || hour > 20 || (hour === 20 && minute > 0)) {
-    alert("⚠️ Hiện chỉ có thể đặt vé trong khung giờ 9:00 - 20:00.\nVui lòng quay lại trong thời gian hoạt động!");
-    return; // dừng, không cho chọn
-  }
-
-  // ✅ Nếu đang trong khung giờ thì cho chọn ngày
-  selectedDate = thisDate;
-  input.value = formatDate(selectedDate);
-  hideCalendar();
-  renderCalendar(currentDate);
-  checkFormComplete();
+        // Nếu chọn ngày sau hôm nay thì không giới hạn giờ
+        selectedDate = thisDate;
+        input.value = formatDate(selectedDate);
+        hideCalendar();
+        renderCalendar(currentDate);
+        checkFormComplete();
       });
     }
 
@@ -164,16 +169,27 @@ function renderCalendar(date) {
   calendar.querySelectorAll("[data-action]").forEach((btn) =>
     btn.addEventListener("click", (e) => {
       e.stopPropagation();
-      currentDate.setMonth(currentDate.getMonth() + (btn.dataset.action === "next" ? 1 : -1));
+      currentDate.setMonth(
+        currentDate.getMonth() + (btn.dataset.action === "next" ? 1 : -1)
+      );
       renderCalendar(currentDate);
     })
   );
 }
 
-
 function formatDate(date) {
-  const days = ["Chủ nhật", "Thứ hai", "Thứ ba", "Thứ tư", "Thứ năm", "Thứ sáu", "Thứ bảy"];
-  return `${days[date.getDay()]}, ${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+  const days = [
+    "Chủ nhật",
+    "Thứ hai",
+    "Thứ ba",
+    "Thứ tư",
+    "Thứ năm",
+    "Thứ sáu",
+    "Thứ bảy",
+  ];
+  return `${days[date.getDay()]}, ${date.getDate()}/${
+    date.getMonth() + 1
+  }/${date.getFullYear()}`;
 }
 
 function toggleCalendar() {
@@ -193,7 +209,8 @@ input.addEventListener("click", (e) => {
 
 // Click ngoài để ẩn cả dropdown & calendar
 document.addEventListener("click", (e) => {
-  if (!dropdownList.contains(e.target) && !dropdownHeader.contains(e.target)) toggleDropdown(false);
+  if (!dropdownList.contains(e.target) && !dropdownHeader.contains(e.target))
+    toggleDropdown(false);
   if (!calendar.contains(e.target) && e.target !== input) hideCalendar();
 });
 

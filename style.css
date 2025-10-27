@@ -129,7 +129,7 @@
 .bodyContainer{
     width: 90%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     gap: 20px;
@@ -141,8 +141,8 @@
 }
 
 .card {
-   width: 180px;
-   height: 180px;
+   width: 280px;
+   height: 200px;
    background-color: #fff;
    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
    border-radius: 10px;
@@ -596,7 +596,7 @@
 /* ----------------------------- */
 
 .ticket-detail {
-  max-width: 480px;
+  max-width: 680px;
   margin: auto;
   background-color: #fffafa;
   box-shadow:   rgba(0, 0, 0, 0.35) 0px 5px 15px;

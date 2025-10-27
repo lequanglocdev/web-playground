@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-     <title>VinWonders</title>
+    <title>VinWonders</title>
     <link rel="icon" type="image/png" href="./assets/logoweb.webp" />
     <link rel="stylesheet" href="./style.css" />
     <link
@@ -14,9 +14,6 @@
       referrerpolicy="no-referrer" />
   </head>
   <body>
-    <!-- <h2>Thông tin đặt vé</h2> -->
-    <!-- <p>Điểm đến: <span class="location-info"></span></p>
-    <p>Ngày: <span class="date-info"></span></p> -->
     <div class="wrapperDetaiTicket">
       <div class="ticket-detail">
         <div class="banner">
@@ -28,7 +25,6 @@
           </div>
           <div class="cart-btn"><i class="fa-regular fa-heart"></i></div>
         </div>
-
         <div class="info">
           <h2>VinWonders Nha Trang</h2>
           <p class="rating"><span>⭐ 4.2</span> (7529 lượt đánh giá)</p>
@@ -66,40 +62,6 @@
               <button class="btn-choose">Chọn</button>
             </div>
           </div>
-          <div class="ticket-card">
-            <h3>
-              [Nha Trang Passport] - [Nửa ngày] - Cáp treo + Xông hơi Aquafield
-              (2 tiếng) + Tata Show
-            </h3>
-            <ul>
-              <li>Bé hóa thân thành nhân viên sở thú nhí</li>
-              <li>Trải nghiệm chăm sóc, tương tác với động vật</li>
-              <li>Lớp học diễn ra trong 01 tiếng</li>
-            </ul>
-            <a href="#">Xem chi tiết »</a>
-
-            <div class="price-box">
-              <p>Chỉ từ <span class="price">300,000 đ</span></p>
-              <button class="btn-choose">Chọn</button>
-            </div>
-          </div>
-          <div class="ticket-card">
-            <h3>
-              [Nha Trang Passport] - [Nửa ngày] - Cáp treo + Xông hơi Aquafield
-              (2 tiếng) + Tata Show
-            </h3>
-            <ul>
-              <li>Bé hóa thân thành nhân viên sở thú nhí</li>
-              <li>Trải nghiệm chăm sóc, tương tác với động vật</li>
-              <li>Lớp học diễn ra trong 01 tiếng</li>
-            </ul>
-            <a href="#">Xem chi tiết »</a>
-
-            <div class="price-box">
-              <p>Chỉ từ <span class="price">300,000 đ</span></p>
-              <button class="btn-choose">Chọn</button>
-            </div>
-          </div>
         </div>
       </div>
       <!-- modal chi tiết vé -->
@@ -116,7 +78,7 @@
       <div id="buyModal" class="modalBuyTicket">
         <div class="modal-content ticket-buy">
           <span class="close-btn">&times;</span>
-          <h3 class="modal-title">Chọn sản phẩm</h3>
+          <h3 class="modal-title">Chọn loại vé</h3>
           <p>[Vinpearl Harbour] - Vé xem Tata Show</p>
 
           <div class="quantity-section">
@@ -259,15 +221,25 @@
           const details = `
       <h4>BAO GỒM</h4>
       <ul>
-        <li>Vé xem vở diễn thực cảnh đa phương tiện đẳng cấp quốc tế Tata Show | 19:30 - 20:10 hàng ngày</li>
-        <li>Các quyền lợi khác: Thưởng thức màn biểu diễn Nhạc nước lúc 19:00 - 19:15; 
-            Chương trình bắn pháo hoa sẽ diễn ra hàng tuần vào các ngày Thứ 7 (Pháo hoa tầm cao tại Quảng Trường Lễ Hội) 
-            và Thứ 6 (Pháo hoa tầm trung tại Quảng Trường Thần Thoại) sau Tata Show.</li>
+        <li>Di chuyển bằng cáp treo 02 chiều</li>
+        <li>Xông hơi 02 tiếng tại Aquafield</li>
+        <li>Vé xem Tata Show (vào cửa VinWonders Nha Trang từ 18:30)</li>
+        <li>Miễn phí 02 lượt sử dụng dịch vụ xe buýt VinBus trong ngày</li>
+      </ul>
+      <h4>Mô TẢ</h4>
+      <ul>
+        <li>Trải nghiệm cáp treo vượt biển đầu tiên tại Việt Nam
+ngắm trọn vẻ đẹp của vịnh biển Nha Trang</li>
+        <li>Thư giãn, thải độc cơ thể với liệu trình xông hơi 7 phòng
+trị liệu tại Aquafield – Tổ hợp spa & xông hơi cao cấp Top
+1 Hàn Quốc đầu tiên tại Việt Nam trong 02 tiếng.</li>
       </ul>
       <h4>ĐIỀU KHOẢN</h4>
       <ul>
-        <li>Vé không bao gồm vé trải nghiệm cáp treo. Quý khách vui lòng mua thêm.</li>
-        <li>Vé vào cửa VinWonders Nha Trang từ 18:30.</li>
+        <li>Trong trường hợp điều kiện thời tiết không thuận lợi, cáp
+treo buộc phải dừng hoạt động để đảm bảo an toàn,
+VinWonders sẽ sắp xếp phương tiện di chuyển thay thế</li>
+       
       </ul>
     `;
 
@@ -289,9 +261,11 @@
       const buyModal = document.getElementById("buyModal");
       const buyCloseBtn = buyModal.querySelector(".close-btn");
       const totalElement = buyModal.querySelector(".total");
+      let selectedChooseBtn = null;
 
       document.querySelectorAll(".btn-choose").forEach((btn) => {
-        btn.addEventListener("click", () => {
+        btn.addEventListener("click", (e) => {
+          selectedChooseBtn = e.target;
           buyModal.style.display = "flex";
         });
       });
@@ -330,11 +304,22 @@
           total += count * 100000;
         });
         totalElement.textContent = total.toLocaleString("vi-VN") + " đ";
+
+        // Vô hiệu hóa nút mua nếu tổng tiền = 0
+        const buyBtn = buyModal.querySelector(".buy-btn");
+        if (total === 0) {
+          buyBtn.disabled = true;
+          buyBtn.style.opacity = "0.6";
+          buyBtn.style.cursor = "not-allowed";
+        } else {
+          buyBtn.disabled = false;
+          buyBtn.style.opacity = "1";
+          buyBtn.style.cursor = "pointer";
+        }
       }
 
       // const buyBtn = buyModal.querySelector(".buy-btn");
       // const qrModal = document.getElementById("qrModal");
-      
 
       // buyBtn.addEventListener("click", () => {
       //   // Ẩn modal mua vé
@@ -343,8 +328,6 @@
       //   // Hiển thị modal QR
       //   qrModal.style.display = "flex";
       // });
-
-      
 
       // window.addEventListener("click", (e) => {
       //   if (e.target === qrModal) {
@@ -362,9 +345,7 @@
       const qrCloseBtn = qrModal.querySelector(".close-btn");
       const toast = document.getElementById("successToast");
 
-
       buyBtn.addEventListener("click", () => {
-        
         // Ẩn modal mua vé
         buyModal.style.display = "none";
 
@@ -378,6 +359,14 @@
 
         confirmModal.style.display = "flex";
       });
+
+      function resetBuyModal() {
+        buyModal.querySelectorAll(".ticket-type").forEach((type) => {
+          const countEl = type.querySelector(".count");
+          countEl.textContent = "0"; // reset tất cả về 0
+        });
+        updateTotal();
+      }
 
       // Đóng modal xác nhận
       confirmCloseBtn.addEventListener("click", () => {
@@ -396,10 +385,22 @@
       // Đóng modal QR khi nhấn nút X hoặc click ra ngoài
       qrCloseBtn.addEventListener("click", () => {
         qrModal.style.display = "none";
+        resetBuyModal();
+        if (selectedChooseBtn) {
+          selectedChooseBtn.disabled = true;
+          selectedChooseBtn.textContent = "Đã mua";
+          selectedChooseBtn.style.opacity = "0.6";
+          selectedChooseBtn.style.cursor = "not-allowed";
+          selectedChooseBtn.style.backgroundColor = "#ccc";
+        }
 
         // Hiện thông báo mua thành công sau khi đóng QR
         toast.classList.add("show");
-        setTimeout(() => toast.classList.remove("show"), 2500);
+
+        setTimeout(() => {
+          toast.classList.remove("show");
+          window.location.href = "playground.html"; // 👈 chuyển trang ở đây
+        }, 2500);
       });
     </script>
   </body>
