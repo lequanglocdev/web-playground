@@ -3,17 +3,17 @@ const slider = document.querySelector('.bodySlider');
 const items = document.querySelectorAll('.sliderItem');
 let index = 0;
 
-setInterval(() => {
-  index++;
-  if (index >= items.length) {
-    index = 0;
-  }
-  const scrollAmount = items[index].offsetLeft;
-  slider.scrollTo({
-    left: scrollAmount,
-    behavior: "smooth"
-  });
-}, 1000);
+// setInterval(() => {
+//   index++;
+//   if (index >= items.length) {
+//     index = 0;
+//   }
+//   const scrollAmount = items[index].offsetLeft;
+//   slider.scrollTo({
+//     left: scrollAmount,
+//     behavior: "smooth"
+//   });
+// }, 1000);
 // __________
 
 const itemsMenuIcons = document.querySelectorAll('.menuItem');
@@ -134,11 +134,24 @@ function renderCalendar(date) {
       day.classList.add("disabled");
     } else {
       day.addEventListener("click", () => {
-        selectedDate = thisDate;
-        input.value = formatDate(selectedDate);
-        hideCalendar();
-        renderCalendar(currentDate);
-        checkFormComplete();
+       const now = new Date();
+  const hour = now.getHours();
+  const minute = now.getMinutes();
+
+  console.log("⏰ Giờ hiện tại:", hour, "Phút:", minute); // để kiểm tra trong console
+
+  // ⛔ Kiểm tra giờ hoạt động: chỉ cho chọn từ 9:00 sáng tới 20:00 tối
+  if (hour < 9 || hour > 20 || (hour === 20 && minute > 0)) {
+    alert("⚠️ Hiện chỉ có thể đặt vé trong khung giờ 9:00 - 20:00.\nVui lòng quay lại trong thời gian hoạt động!");
+    return; // dừng, không cho chọn
+  }
+
+  // ✅ Nếu đang trong khung giờ thì cho chọn ngày
+  selectedDate = thisDate;
+  input.value = formatDate(selectedDate);
+  hideCalendar();
+  renderCalendar(currentDate);
+  checkFormComplete();
       });
     }
 
