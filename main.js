@@ -13,7 +13,6 @@ setInterval(() => {
     behavior: "smooth"
   });
 }, 1000);
-__________
 
 const itemsMenuIcons = document.querySelectorAll(".menuItem");
 
