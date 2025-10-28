@@ -2,18 +2,18 @@ const slider = document.querySelector(".bodySlider");
 const items = document.querySelectorAll(".sliderItem");
 let index = 0;
 
-// setInterval(() => {
-//   index++;
-//   if (index >= items.length) {
-//     index = 0;
-//   }
-//   const scrollAmount = items[index].offsetLeft;
-//   slider.scrollTo({
-//     left: scrollAmount,
-//     behavior: "smooth"
-//   });
-// }, 1000);
-// __________
+setInterval(() => {
+  index++;
+  if (index >= items.length) {
+    index = 0;
+  }
+  const scrollAmount = items[index].offsetLeft;
+  slider.scrollTo({
+    left: scrollAmount,
+    behavior: "smooth"
+  });
+}, 1000);
+__________
 
 const itemsMenuIcons = document.querySelectorAll(".menuItem");
 

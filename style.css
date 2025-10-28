@@ -141,8 +141,8 @@
 }
 
 .card {
-   width: 280px;
-   height: 200px;
+   width: 180px;
+   height: 180px;
    background-color: #fff;
    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
    border-radius: 10px;
@@ -926,6 +926,10 @@
   gap: 16px;
   padding: 20px;
   background-color: #f6f6f6;
+}
+
+.profile-grid a {
+  text-decoration: none;
 }
 
 .profile-card {
