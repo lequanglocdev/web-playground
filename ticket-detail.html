@@ -81,6 +81,23 @@
           <h3 class="modal-title">Chọn loại vé</h3>
           <p>[Vinpearl Harbour] - Vé xem Tata Show</p>
 
+          <!-- Chọn cơ sở -->
+          <div class="location-section">
+            <h4><i class="fa-solid fa-location-dot"></i> Chọn cơ sở</h4>
+            <div class="location-options">
+              <button class="active">ZooKeeper NT</button>
+            </div>
+          </div>
+
+          <!-- Chọn thời gian -->
+          <div class="time-section">
+            <h4><i class="fa-regular fa-clock"></i> Chọn thời gian</h4>
+            <div class="time-options">
+              <button class="time-btn active">9:30</button>
+              <button class="time-btn">14:00</button>
+            </div>
+          </div>
+
           <div class="quantity-section">
             <h4><i class="fa-solid fa-user-group"></i> Số lượng mua</h4>
 
@@ -130,50 +147,6 @@
           <div class="footer">
             <span class="total">100,000 đ</span>
             <button class="buy-btn">Mua ngay</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- modal xác nhận người đặt -->
-      <div id="confirmModal" class="modal confirm-modal">
-        <div class="modal-content confirm-content">
-          <span class="close-btn">&times;</span>
-          <h3>Xác nhận thông tin đặt vé</h3>
-          <div class="confirm-info">
-            <p>
-              <strong>Tên khách hàng:</strong>
-              <span id="customerName">Lê Quang Lộc</span>
-            </p>
-            <p><strong>Ngày đặt:</strong> <span id="bookingDate"></span></p>
-            <p><strong>Tổng tiền:</strong> <span id="confirmTotal"></span></p>
-          </div>
-          <button class="pay-btn">Thanh toán</button>
-        </div>
-      </div>
-
-      <!-- Thông báo mua thành công -->
-      <div id="successToast" class="toast">🎉 Bạn đã mua thành công!</div>
-
-      <!-- Modal quét mã QR -->
-      <div id="qrModal" class="modal qr-modal">
-        <div class="modal-content qr-content">
-          <span class="close-btn">&times;</span>
-          <h3>Quét mã QR để thanh toán</h3>
-          <p>Vui lòng mở ứng dụng ngân hàng hoặc ví điện tử để quét mã.</p>
-          <img src="./assets/qr.jpg" alt="QR Code" class="qr-image" />
-          <div class="ticket-details">
-            <div class="ticket-info">
-              <h4>Tên khách hàng:</h4>
-              <h4>Số điện thoại:</h4>
-              <h4>Số tiền:</h4>
-              <h4>Mã vé:</h4>
-            </div>
-            <div class="ticket-note">
-              <h4>Lê Quang Lộc</h4>
-              <h4>0909123456</h4>
-              <h4>300,000 đ</h4>
-              <h4>VIN-261025-1000-COMBO-2NL-1TE-PRIORITY</h4>
-            </div>
           </div>
         </div>
       </div>
@@ -318,46 +291,68 @@ VinWonders sẽ sắp xếp phương tiện di chuyển thay thế</li>
         }
       }
 
-      // const buyBtn = buyModal.querySelector(".buy-btn");
-      // const qrModal = document.getElementById("qrModal");
+      const timeButtons = document.querySelectorAll(".time-btn");
 
-      // buyBtn.addEventListener("click", () => {
-      //   // Ẩn modal mua vé
-      //   buyModal.style.display = "none";
+      timeButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          // Xóa class active ở tất cả nút
+          timeButtons.forEach((b) => b.classList.remove("active"));
+          // Thêm class active cho nút được chọn
+          btn.classList.add("active");
+        });
+      });
 
-      //   // Hiển thị modal QR
-      //   qrModal.style.display = "flex";
-      // });
-
-      // window.addEventListener("click", (e) => {
-      //   if (e.target === qrModal) {
-      //     qrModal.style.display = "none";
-      //     toast.classList.add("show");
-      //     setTimeout(() => toast.classList.remove("show"), 2500);
-      //   }
-      // });
       const buyBtn = buyModal.querySelector(".buy-btn");
-      const confirmModal = document.getElementById("confirmModal");
-      const confirmCloseBtn = confirmModal.querySelector(".close-btn");
-      const confirmTotal = document.getElementById("confirmTotal");
-      const bookingDateEl = document.getElementById("bookingDate");
-      const payBtn = confirmModal.querySelector(".pay-btn");
-      const qrCloseBtn = qrModal.querySelector(".close-btn");
-      const toast = document.getElementById("successToast");
-
       buyBtn.addEventListener("click", () => {
-        // Ẩn modal mua vé
+        const selectedTime =
+          buyModal.querySelector(".time-btn.active").textContent;
+        const selectedBranch = buyModal.querySelector(
+          ".location-options .active"
+        ).textContent;
+
+        const total = parseInt(totalElement.textContent.replace(/\D/g, ""));
+
+        // 🟢 Lấy số lượng từng loại vé
+        const ticketTypes = buyModal.querySelectorAll(".ticket-type");
+        const persons = [];
+        ticketTypes.forEach((type) => {
+          const name = type.querySelector("p").textContent.trim();
+          const count = parseInt(type.querySelector(".count").textContent);
+          if (count > 0) persons.push(`${count} ${name}`);
+        });
+
+        // 🟢 Lấy dữ liệu động từ trang hiện tại
+        const locationName =
+          document.querySelector(".info h2")?.textContent.trim() ||
+          "Không rõ địa điểm";
+        const title =
+          document.querySelector(".ticket-card h3")?.textContent.trim() ||
+          "Không rõ vé";
+        const imageSrc =
+          document.querySelector(".banner img")?.src || "./assets/default.jpg";
+
+        // 🟢 Lấy ngày hiển thị ở nút ngày
+        const selectedDate =
+          document.querySelector(".date-buttons .active")?.textContent.trim() ||
+          "Không rõ ngày";
+
+        const cartItem = {
+          location: locationName,
+          title: title,
+          branch: selectedBranch,
+          time: selectedTime,
+          date: selectedDate,
+          person: persons.join(", "),
+          price: total,
+          image: imageSrc,
+        };
+
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cart.push(cartItem);
+        localStorage.setItem("cart", JSON.stringify(cart));
+
         buyModal.style.display = "none";
-
-        // Hiện modal xác nhận
-        const totalText = totalElement.textContent;
-        confirmTotal.textContent = totalText;
-
-        const today = new Date();
-        const formattedDate = today.toLocaleDateString("vi-VN");
-        bookingDateEl.textContent = formattedDate;
-
-        confirmModal.style.display = "flex";
+        window.location.href = "./cart.html";
       });
 
       function resetBuyModal() {
@@ -375,32 +370,6 @@ VinWonders sẽ sắp xếp phương tiện di chuyển thay thế</li>
 
       window.addEventListener("click", (e) => {
         if (e.target === confirmModal) confirmModal.style.display = "none";
-      });
-
-      // Khi nhấn "Thanh toán"
-      payBtn.addEventListener("click", () => {
-        confirmModal.style.display = "none";
-        qrModal.style.display = "flex";
-      });
-      // Đóng modal QR khi nhấn nút X hoặc click ra ngoài
-      qrCloseBtn.addEventListener("click", () => {
-        qrModal.style.display = "none";
-        resetBuyModal();
-        if (selectedChooseBtn) {
-          selectedChooseBtn.disabled = true;
-          selectedChooseBtn.textContent = "Đã mua";
-          selectedChooseBtn.style.opacity = "0.6";
-          selectedChooseBtn.style.cursor = "not-allowed";
-          selectedChooseBtn.style.backgroundColor = "#ccc";
-        }
-
-        // Hiện thông báo mua thành công sau khi đóng QR
-        toast.classList.add("show");
-
-        setTimeout(() => {
-          toast.classList.remove("show");
-          window.location.href = "playground.html"; // 👈 chuyển trang ở đây
-        }, 2500);
       });
     </script>
   </body>

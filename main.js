@@ -137,20 +137,7 @@ function renderCalendar(date) {
     } else {
       day.addEventListener("click", () => {
         const now = new Date();
-        const hour = now.getHours();
-        const minute = now.getMinutes();
-
-        if (thisDate.toDateString() === now.toDateString()) {
-          // Chỉ cho đặt từ 9:00 đến 20:00
-          if (hour < 9 || hour > 20 || (hour === 20 && minute > 0)) {
-            alert(
-              "⚠️ Hôm nay chỉ có thể đặt vé trong khung giờ 9:00 - 20:00.\nVui lòng quay lại trong thời gian hoạt động!"
-            );
-            return; // không cho chọn
-          }
-        }
-
-        // Nếu chọn ngày sau hôm nay thì không giới hạn giờ
+        
         selectedDate = thisDate;
         input.value = formatDate(selectedDate);
         hideCalendar();
