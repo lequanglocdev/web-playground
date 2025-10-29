@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+    font-family: "Open Sans", sans-serif;
 }
 
 .header{
@@ -162,12 +162,12 @@
 .cardContent{
     font-size: 18px;
     font-weight: 600;
-    color: rgb(101, 101, 101);
+    color: #333;
 }
 
 .cardDescription{
     font-size: 14px;
-    color: gray;
+    color: #555;
     margin-top: 10px;
 }
 
@@ -177,8 +177,14 @@
     gap: 20px;
     padding-bottom: 10px;
     margin-bottom: 20px;
-    overflow: hidden; /* Ẩn phần trượt ra ngoài */
+    overflow-x: auto;
     scroll-behavior: smooth;
+     scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE và Edge cũ */
+}
+
+.bodySlider::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge mới */
 }
 
 .bodySlider a{
@@ -204,7 +210,7 @@
 }
 
 .sliderContent{
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 600;
     color: rgb(101, 101, 101);
     padding: 0 10px;
@@ -212,7 +218,7 @@
 }
 
 .sliderLocation{
-    font-size: 16px;
+    font-size: 14px;
     color: rgb(230, 124, 25);
     padding: 0 10px;
 }
@@ -225,7 +231,6 @@
   border-radius: 20px;
   overflow: hidden;
   width: 100%;
-  margin-bottom: 150px;
   padding: 20px;
 }
 
@@ -271,6 +276,67 @@
 .journey-image img {
   width: 350px;
   border-radius: 10px;
+  object-fit: cover;
+}
+
+.virtual-queue {
+   margin-bottom: 150px;
+   width: 100%;
+   height: 300px;
+   padding: 0 10px;
+}
+
+.virtual-queue .title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.queue-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #feca57;
+  border-radius: 20px;
+  padding: 24px 30px;
+  color: white;
+  overflow: hidden;
+  position: relative;
+}
+
+.queue-content {
+  width:  100%;
+}
+
+.queue-text {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.4;
+  margin-bottom: 20px;
+  color:#333;
+}
+
+.queue-btn {
+  background: none;
+  border: 1px solid tomato;
+  border-radius: 50px;
+  padding: 10px 22px;
+  color: #333;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.queue-btn:hover {
+  background-color: #e1571c;
+  color: #fff;
+}
+
+.queue-img {
+  width: 320px;
+  height: auto;
+  border-radius: 16px;
   object-fit: cover;
 }
 
@@ -1096,6 +1162,9 @@
 }
 
 @media (max-width:739px){
+  .wrapper{
+    padding: 6px 10px;
+  }
   .header{
       padding: 0 15px;
       height: 60px;
@@ -1143,22 +1212,25 @@
       width: 260px;
       height: 450px;
     }
-    
-    .journey-section {
-      padding: 15px;
-    }
+   
     .journey-section .journey-image img{
       width: 100%;
       max-width: 150px;
     }
-    .journey-content {
-      flex: 1;
+    .journey-content{
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+
     }
+    
     .journey-content h2 {
-      font-size: 14px;
+      font-size: 12px;
     }
     .journey-content p {
-      font-size: 14px;
+      font-size: 12px;
+      text-align: left;
     }
     .journey-btn {
       font-size: 12px;
@@ -1188,4 +1260,63 @@
     .ticket-card ul {
       font-size: 13px;
     }
+
+  .virtual-queue {
+   margin-bottom: 150px;
+   width: 100%;
+   height: 200px;
+   /* padding: 0 10px; */
+  
+}
+
+.virtual-queue .title {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.queue-card {
+  display: flex;
+  gap: 20px;
+  flex: 1;
+}
+
+.queue-content {
+  width: 50%;
+}
+
+.queue-text {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.4;
+  margin-bottom: 20px;
+  color:#333;
+}
+
+.queue-btn {
+  width: 100%;
+  background: none;
+  border: 1px solid tomato;
+  border-radius: 10px;
+  color: #333;
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 6px;
+}
+
+.queue-btn:hover {
+  background-color: #e1571c;
+  color: #fff;
+}
+
+.queue-img {
+  width: 150px;
+  height: auto;
+  border-radius: 16px;
+  object-fit: cover;
+}
+    
+   
 }

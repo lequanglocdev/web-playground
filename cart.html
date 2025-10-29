@@ -27,22 +27,26 @@
         display: flex;
         justify-content: center; /* căn giữa ngang */
         align-items: flex-start; /* căn giữa dọc */
-        
       }
 
-      .wrapperCart{
+      .wrapperCart {
         display: flex;
         flex-direction: column;
         width: 800px;
-
       }
 
+      .wrapperIcon {
+        padding: 6px;
+        color: tomato;
+        font-size: 20px;
+        cursor: pointer;
+      }
       h2 {
         text-align: center;
         margin-bottom: 20px;
-        color:#ff6600; ;
+        color: #ff6600;
       }
-      
+
       .cart-item {
         background: #fff;
         border-radius: 12px;
@@ -222,32 +226,32 @@
       }
 
       .delete-btn {
-  display: flex;
-  align-items: center;
-  gap: 6px; /* khoảng cách giữa icon và chữ */
-  background-color: #ffe5e5; /* nền đỏ nhạt */
-  color: #d62828; /* đỏ chính */
-  border: none;
-  border-radius: 8px;
-  padding: 8px 14px;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
+        display: flex;
+        align-items: center;
+        gap: 6px; /* khoảng cách giữa icon và chữ */
+        background-color: #ffe5e5; /* nền đỏ nhạt */
+        color: #d62828; /* đỏ chính */
+        border: none;
+        border-radius: 8px;
+        padding: 8px 14px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
 
-.delete-btn i {
-  font-size: 16px;
-}
+      .delete-btn i {
+        font-size: 16px;
+      }
 
-.delete-btn:hover {
-  background-color: #d62828; /* đậm hơn khi hover */
-  color: #fff; /* chữ và icon trắng */
-}
+      .delete-btn:hover {
+        background-color: #d62828; /* đậm hơn khi hover */
+        color: #fff; /* chữ và icon trắng */
+      }
 
-.delete-btn:active {
-  transform: scale(0.97);
-  opacity: 0.9;
-}
+      .delete-btn:active {
+        transform: scale(0.97);
+        opacity: 0.9;
+      }
 
       @keyframes fadeIn {
         from {
@@ -418,102 +422,105 @@
 
   <body>
     <div class="wrapperCart">
+      <a href="./ticket-detail.html">
+        <i class="fa-solid fa-arrow-left wrapperIcon"></i>
+      </a>
       <h2>Giỏ hàng</h2>
-    <div id="cartContainer"></div>
+      <div id="cartContainer"></div>
 
-    <div class="discount-section">
-      <div><i class="fa-solid fa-percent"></i> Mã ưu đãi</div>
-      <input type="text" placeholder="Chọn nhập mã ưu đãi" />
-    </div>
+      <div class="discount-section">
+        <div><i class="fa-solid fa-percent"></i> Mã ưu đãi</div>
+        <input type="text" placeholder="Chọn nhập mã ưu đãi" />
+      </div>
 
-    <div class="total-section">
-      <p>Tổng cộng: (Đã bao gồm VAT)</p>
-      <h3 id="totalPrice">0 đ</h3>
-      <button class="continue-btn">Tiếp tục</button>
+      <div class="total-section">
+        <p>Tổng cộng: (Đã bao gồm VAT)</p>
+        <h3 id="totalPrice">0 đ</h3>
+        <button class="continue-btn">Tiếp tục</button>
 
-      <!-- Modal sửa vé -->
-      <div id="editModal" class="modalBuyTicket">
-        <div class="modal-content ticket-buy">
-          <span class="close-btn">&times;</span>
-          <h3 class="modal-title">Sửa thông tin vé</h3>
+        <!-- Modal sửa vé -->
+        <div id="editModal" class="modalBuyTicket">
+          <div class="modal-content ticket-buy">
+            <span class="close-btn">&times;</span>
+            <h3 class="modal-title">Sửa thông tin vé</h3>
 
-          <div class="location-section">
-            <h4><i class="fa-solid fa-location-dot"></i> Cơ sở</h4>
-            <div class="location-options">
-              <button class="active">ZooKeeper NT</button>
-              <button>Harbour</button>
-            </div>
-          </div>
-
-          <div class="time-section">
-            <h4><i class="fa-regular fa-clock"></i> Thời gian</h4>
-            <div class="time-options">
-              <button class="time-btn active">9:30</button>
-              <button class="time-btn">14:00</button>
-            </div>
-          </div>
-
-          <div class="quantity-section">
-            <h4><i class="fa-solid fa-user-group"></i> Số lượng</h4>
-            <div class="ticket-type">
-              <p>Người lớn</p>
-              <div class="counter">
-                <button class="minus">−</button>
-                <span class="count">1</span>
-                <button class="plus">+</button>
+            <div class="location-section">
+              <h4><i class="fa-solid fa-location-dot"></i> Cơ sở</h4>
+              <div class="location-options">
+                <button class="active">ZooKeeper NT</button>
+                <button>Harbour</button>
               </div>
             </div>
-          </div>
 
-          <div class="footer">
-            <span class="total">100,000 đ</span>
-            <button class="save-btn">Lưu thay đổi</button>
+            <div class="time-section">
+              <h4><i class="fa-regular fa-clock"></i> Thời gian</h4>
+              <div class="time-options">
+                <button class="time-btn active">9:30</button>
+                <button class="time-btn">14:00</button>
+              </div>
+            </div>
+
+            <div class="quantity-section">
+              <h4><i class="fa-solid fa-user-group"></i> Số lượng</h4>
+              <div class="ticket-type">
+                <p>Người lớn</p>
+                <div class="counter">
+                  <button class="minus">−</button>
+                  <span class="count">1</span>
+                  <button class="plus">+</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="footer">
+              <span class="total">100,000 đ</span>
+              <button class="save-btn">Lưu thay đổi</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal nhập thông tin người dùng -->
+        <div id="userModal" class="modalBuyTicket">
+          <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3 class="modal-title">Thông tin thanh toán</h3>
+
+            <div class="input-group">
+              <label>Họ và tên</label>
+              <input
+                type="text"
+                id="fullName"
+                placeholder="Nhập họ tên của bạn"
+                required />
+            </div>
+
+            <div class="input-group">
+              <label>Số điện thoại</label>
+              <input
+                type="tel"
+                id="phoneNumber"
+                placeholder="Nhập số điện thoại"
+                required />
+            </div>
+
+            <button
+              id="confirmPaymentBtn"
+              class="save-btn"
+              style="width: 100%; margin-top: 10px">
+              Xác nhận thanh toán
+            </button>
+          </div>
+        </div>
+
+        <!-- Modal bill -->
+        <div id="billModal" class="modalBuyTicket">
+          <div class="modal-content" style="max-width: 500px">
+            <span class="close-btn">&times;</span>
+            <h3 class="modal-title">Hoá đơn thanh toán</h3>
+            <div id="billContent"></div>
           </div>
         </div>
       </div>
-
-      <!-- Modal nhập thông tin người dùng -->
-      <div id="userModal" class="modalBuyTicket">
-        <div class="modal-content">
-          <span class="close-btn">&times;</span>
-          <h3 class="modal-title">Thông tin thanh toán</h3>
-
-          <div class="input-group">
-            <label>Họ và tên</label>
-            <input
-              type="text"
-              id="fullName"
-              placeholder="Nhập họ tên của bạn"
-              required />
-          </div>
-
-          <div class="input-group">
-            <label>Số điện thoại</label>
-            <input
-              type="tel"
-              id="phoneNumber"
-              placeholder="Nhập số điện thoại"
-              required />
-          </div>
-
-          <button
-            id="confirmPaymentBtn"
-            class="save-btn"
-            style="width: 100%; margin-top: 10px">
-            Xác nhận thanh toán
-          </button>
-        </div>
-      </div>
-
-      <!-- Modal bill -->
-      <div id="billModal" class="modalBuyTicket">
-        <div class="modal-content" style="max-width: 500px">
-          <span class="close-btn">&times;</span>
-          <h3 class="modal-title">Hoá đơn thanh toán</h3>
-          <div id="billContent"></div>
-        </div>
-      </div>
-    </div>
     </div>
 
     <script>
@@ -568,9 +575,7 @@
             </button>
             <button class="edit-btn" data-index="${index}">
     <i class="fa-regular fa-pen-to-square"></i> Sửa vé
-  </button>
-            <a href="#">Xem chi tiết »</a>
-          </div>
+ 
         `;
           cartContainer.appendChild(card);
         });
@@ -600,43 +605,51 @@
 
       // --- Mở modal khi bấm nút Sửa ---
       document.querySelectorAll(".edit-btn").forEach((btn, index) => {
-  btn.addEventListener("click", () => {
-    currentEditIndex = index;
-    const item = cart[index];
+        btn.addEventListener("click", () => {
+          currentEditIndex = index;
+          const item = cart[index];
 
-    // Cập nhật cơ sở
-    editModal.querySelectorAll(".location-options button").forEach((b) => {
-      b.classList.toggle("active", b.textContent.trim() === item.branch);
-    });
+          // Cập nhật cơ sở
+          editModal
+            .querySelectorAll(".location-options button")
+            .forEach((b) => {
+              b.classList.toggle(
+                "active",
+                b.textContent.trim() === item.branch
+              );
+            });
 
-    // ✅ FIX lỗi trùng giờ: reset và gán lại nút giờ đúng
-    const timeOptions = editModal.querySelector(".time-options");
-    const availableTimes = ["9:30", "14:00"];
-    timeOptions.innerHTML = ""; // xoá hết các nút cũ
+          // ✅ FIX lỗi trùng giờ: reset và gán lại nút giờ đúng
+          const timeOptions = editModal.querySelector(".time-options");
+          const availableTimes = ["9:30", "14:00"];
+          timeOptions.innerHTML = ""; // xoá hết các nút cũ
 
-    availableTimes.forEach((time) => {
-      const btnTime = document.createElement("button");
-      btnTime.classList.add("time-btn");
-      btnTime.textContent = time;
-      if (time === item.time) btnTime.classList.add("active");
-      timeOptions.appendChild(btnTime);
-    });
+          availableTimes.forEach((time) => {
+            const btnTime = document.createElement("button");
+            btnTime.classList.add("time-btn");
+            btnTime.textContent = time;
+            if (time === item.time) btnTime.classList.add("active");
+            timeOptions.appendChild(btnTime);
+          });
 
-    // Gán lại sự kiện click cho các nút giờ mới
-    timeOptions.querySelectorAll("button").forEach((b) => {
-      b.addEventListener("click", () => {
-        timeOptions.querySelectorAll("button").forEach((t) => t.classList.remove("active"));
-        b.classList.add("active");
+          // Gán lại sự kiện click cho các nút giờ mới
+          timeOptions.querySelectorAll("button").forEach((b) => {
+            b.addEventListener("click", () => {
+              timeOptions
+                .querySelectorAll("button")
+                .forEach((t) => t.classList.remove("active"));
+              b.classList.add("active");
+            });
+          });
+
+          // Số lượng người
+          editModal.querySelector(".count").textContent =
+            item.person.match(/\d+/)[0];
+
+          updateEditTotal();
+          editModal.style.display = "flex";
+        });
       });
-    });
-
-    // Số lượng người
-    editModal.querySelector(".count").textContent = item.person.match(/\d+/)[0];
-
-    updateEditTotal();
-    editModal.style.display = "flex";
-  });
-});
 
       // --- Đóng modal ---
       editCloseBtn.addEventListener(
@@ -727,16 +740,15 @@
       userModal.querySelector(".close-btn").addEventListener("click", () => {
         userModal.style.display = "none";
       });
-     billModal.querySelector(".close-btn").addEventListener("click", () => {
-  billModal.style.display = "none";
+      billModal.querySelector(".close-btn").addEventListener("click", () => {
+        billModal.style.display = "none";
 
-  // Hiển thị thông báo thanh toán thành công
-  alert("🎉 Thanh toán thành công! Cảm ơn bạn đã mua vé vào cổng.");
+        // Hiển thị thông báo thanh toán thành công
+        alert("🎉 Thanh toán thành công! Cảm ơn bạn đã mua vé vào cổng.");
 
-  // Chuyển hướng sang trang trò chơi
-  window.location.href = "game.html"; // đổi tên file nếu trang bạn khác
-});
-
+        // Chuyển hướng sang trang trò chơi
+        window.location.href = "game.html"; // đổi tên file nếu trang bạn khác
+      });
 
       // xác nhận thanh toán
       confirmPaymentBtn.addEventListener("click", () => {
