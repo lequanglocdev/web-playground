@@ -137,7 +137,7 @@ function renderCalendar(date) {
     } else {
       day.addEventListener("click", () => {
         const now = new Date();
-        
+
         selectedDate = thisDate;
         input.value = formatDate(selectedDate);
         hideCalendar();
@@ -221,5 +221,4 @@ continueBtn.addEventListener("click", () => {
   const targetUrl = `ticket-detail.html?location=${location}&date=${date}`;
   window.location.href = targetUrl;
 });
-
 
