@@ -221,3 +221,5 @@ continueBtn.addEventListener("click", () => {
   const targetUrl = `ticket-detail.html?location=${location}&date=${date}`;
   window.location.href = targetUrl;
 });
+
+

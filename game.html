@@ -3,12 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Khu trò chơi</title>
+  <title>VinWonders</title>
+   <link rel="icon" type="image/png" href="./assets/iconlogo.png" />
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
   />
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Open Sans", sans-serif;
+    }
     body {
       font-family: "Poppins", sans-serif;
       background: #f9fafc;
@@ -43,7 +52,7 @@
     }
 
     .container {
-      max-width: 1200px;
+      max-width: 600px;
       margin: 30px auto;
       padding: 0 20px;
     }
@@ -56,7 +65,7 @@
 
     .card-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 20px;
     }
 
@@ -148,7 +157,7 @@
     .join-btn {
       display: block;
       width: 100%;
-      background: #000;
+      background: #e55b00;
       color: #fff;
       border: none;
       border-radius: 0 0 16px 16px;
@@ -160,7 +169,7 @@
     }
 
     .join-btn:hover {
-      background: #222;
+      background: #ce903f;
     }
 
     /* --- Modal chung --- */
@@ -237,7 +246,7 @@
     }
 
     .time-options button.active {
-      background: #000;
+      background: #e48111;
       color: #fff;
     }
 
@@ -250,7 +259,7 @@
 
     .counter button {
       border: none;
-      background: #000;
+      background: #e67e22;
       color: #fff;
       width: 30px;
       height: 30px;
@@ -278,6 +287,12 @@
     .save-btn:hover {
       background: #e55b00;
     }
+
+    @media (max-width: 600px) {
+      .card-grid {
+        grid-template-columns: 1fr; /* nhỏ hơn 600px thì 1 cột */
+      }
+    }
   </style>
 </head>
 <body>
@@ -285,7 +300,7 @@
     <button onclick="window.history.back()">
       <i class="fa-solid fa-arrow-left"></i>
     </button>
-    <h2>Vé hàng đợi trò chơi</h2>
+    <h2>Vé ưu tiên trò chơi</h2>
     <div></div>
   </header>
 
@@ -387,7 +402,7 @@
           <p>Thứ tự hiện tại: <strong>${g.queue}</strong></p>
           <div class="queue">
             <span><i class="fa-regular fa-clock"></i> ${g.wait} phút chờ</span>
-            <span><i class="fa-solid fa-ticket"></i> Vé hàng đợi</span>
+            <span><i class="fa-solid fa-ticket"></i> Vé ưu tiên</span>
           </div>
         </div>
         <button class="join-btn" data-index="${i}">Đặt vé ưu tiên</button>

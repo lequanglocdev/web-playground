@@ -1,8 +1,10 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
 }
 
 body {
@@ -54,7 +56,7 @@ body {
 }
 
 .total-points {
-  background: #ffe6f1;
+  background: #f6e58d;
   text-align: center;
   font-size: 1.8rem;
   font-weight: bold;
@@ -89,7 +91,7 @@ body {
 }
 
 .points {
-  color: #ff4081;
+  color: #333;
   font-weight: bold;
 }
 
@@ -99,7 +101,7 @@ body {
 }
 
 .exchange-btn {
-  background-color: #2eaf4a;
+  background-color: #eb4d4b;
   color: white;
   border: none;
   border-radius: 30px;
@@ -115,13 +117,13 @@ body {
 
 /* Màu nền thẻ */
 .pink {
-  background-color: #ffe6f1;
+  background-color: #ffbe76;
 }
 
 .blue {
-  background-color: #d9eeff;
+  background-color: #ffbe76;
 }
 
 .green {
-  background-color: #eaf9ef;
+  background-color: #ffbe76;
 }

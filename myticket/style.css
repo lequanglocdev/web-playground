@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+}
+
 body {
   font-family: "Segoe UI", sans-serif;
   background: #f6f6f6;
@@ -5,6 +14,36 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  gap: 10px;
+}
+
+.wrapperTicket{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.myTicket{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  background-color: rgb(231, 127, 41);
+  margin-bottom: 20px;
+  border-radius: 6px;
+  color: #fff;
+  padding: 0 20px;
+
+}
+
+.myTicket i {
+  font-size: 20px;
+  padding: 4px;
+  cursor: pointer;
+  color: #fff;
 }
 
 .ticket {
@@ -117,4 +156,124 @@ body {
 .expire-date {
   margin-left: 10px;
   text-decoration: underline;
+}
+
+/* --- Responsive --- */
+
+/* Tablet (≤ 992px) */
+@media (max-width: 992px) {
+  .ticket {
+    width: 90%;
+    padding: 16px 20px;
+  }
+
+  .logo {
+    width: 100px;
+  }
+
+  .qr-box img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .ticket-right h2 {
+    font-size: 20px;
+  }
+
+  .ticket-right h3 {
+    font-size: 16px;
+  }
+
+  .expire-box {
+    font-size: 14px;
+    padding: 5px 12px;
+  }
+}
+
+/* Mobile (≤ 768px) */
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+    align-items: stretch;
+    height: auto;
+    padding: 20px 0;
+  }
+
+  .ticket {
+    flex-direction: column;
+    width: 90%;
+    margin-bottom: 20px;
+    padding: 20px;
+    align-items: center;
+  }
+
+  .ticket::before,
+  .ticket::after {
+    display: none; /* ẩn lỗ tròn hai bên để tránh tràn */
+  }
+
+  .ticket-left {
+    margin: 0 0 15px 0;
+  }
+
+  .divider {
+    display: none;
+  }
+
+  .ticket-right {
+    text-align: center;
+  }
+
+  .ticket-right h2 {
+    font-size: 18px;
+  }
+
+  .ticket-right h2 span {
+    font-size: 15px;
+  }
+
+  .ticket-right h3 {
+    font-size: 15px;
+  }
+
+  .ticket-right p {
+    font-size: 14px;
+  }
+
+  .expire-box {
+    font-size: 13px;
+    margin-top: 12px;
+  }
+
+  .expire-date {
+    font-size: 13px;
+  }
+}
+
+/* Rất nhỏ (≤ 480px) */
+@media (max-width: 480px) {
+  .logo {
+    width: 80px;
+  }
+
+  .qr-box img {
+    width: 90px;
+    height: 90px;
+  }
+
+  .ticket {
+    padding: 15px;
+  }
+
+  .ticket-right h2 {
+    font-size: 16px;
+  }
+
+  .ticket-right h3 {
+    font-size: 14px;
+  }
+
+  .ticket-right p {
+    font-size: 13px;
+  }
 }
