@@ -253,16 +253,122 @@
         box-sizing: border-box;
       }
 
-      /* ✅ Responsive mobile tối ưu */
-      @media (max-width: 680px) {
-        body {
-          padding: 10px;
-        }
-        .game-card img {
-          height: 150px;
-        }
+      /* ✅ Responsive cho tablet và mobile */
+      @media (max-width: 768px) {
         .modal-content {
-          padding: 20px;
+          width: 90%;
+          max-width: none;
+          padding: 16px;
+          border-radius: 12px;
+        }
+
+        .gameao-head {
+          width: 100%;
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        h3 {
+          font-size: 18px;
+        }
+
+        .time-buttons {
+          gap: 6px;
+        }
+
+        .time-btn {
+          padding: 6px 10px;
+          font-size: 14px;
+        }
+
+        .count-wrapper {
+          gap: 10px;
+        }
+
+        .count-btn {
+          width: 28px;
+          height: 28px;
+          font-size: 18px;
+        }
+
+        .player-input input {
+          padding: 8px;
+          font-size: 14px;
+        }
+
+        .confirm-btn {
+          font-size: 15px;
+          padding: 10px 16px;
+        }
+
+        .invoice h2 {
+          font-size: 20px;
+          text-align: center;
+        }
+
+        .invoice p,
+        .invoice ol li {
+          font-size: 14px;
+          line-height: 1.4;
+        }
+
+        .barcode {
+          height: 40px;
+        }
+      }
+
+      /* ✅ Tối ưu thêm cho màn hình rất nhỏ (≤480px) */
+      @media (max-width: 480px) {
+        body {
+          padding: 8px;
+        }
+
+        .modal-content {
+          padding: 12px;
+          border-radius: 10px;
+          max-height: 85vh;
+          overflow-y: auto;
+        }
+
+        .close {
+          top: 6px;
+          right: 10px;
+          font-size: 20px;
+        }
+
+        .time-btn {
+          padding: 5px 8px;
+          font-size: 13px;
+        }
+
+        .player-input label {
+          font-size: 13px;
+        }
+
+        .player-input input {
+          font-size: 13px;
+          padding: 6px;
+        }
+
+        .confirm-btn {
+          font-size: 14px;
+          padding: 8px;
+        }
+
+        .total {
+          font-size: 14px;
+        }
+
+        .invoice h2 {
+          font-size: 18px;
+        }
+
+        .invoice p {
+          font-size: 13px;
+        }
+
+        .barcode {
+          height: 35px;
         }
       }
     </style>
