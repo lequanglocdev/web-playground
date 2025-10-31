@@ -1181,6 +1181,9 @@
   height: 100%;
   object-fit: cover;
   display: block;
+   transform-origin: center center;
+  transition: transform 0.2s ease;
+  cursor: grab;
 }
 
 .map-head{
@@ -1197,6 +1200,10 @@
   padding: 2px;
   cursor: pointer;
   color: #e1571c;
+}
+
+.map:active {
+  cursor: grabbing;
 }
 
 /* Nút hiển thị trên bản đồ */
@@ -1468,11 +1475,16 @@
     }
 
   .virtual-queue {
-   margin-bottom: 150px;
+   margin-bottom: 4px;
    width: 100%;
    height: 200px;
    
-  
+  }
+
+.virtual-queue-first{
+  margin-bottom: 100px;
+   width: 100%;
+   height: 200px;
 }
 
 .virtual-queue .title {
@@ -1481,7 +1493,19 @@
   margin-bottom: 6px;
 }
 
+.virtual-queue-first .title{
+   font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
 .queue-card {
+  display: flex;
+  gap: 20px;
+  flex: 1;
+}
+
+.queue-card-first{
   display: flex;
   gap: 20px;
   flex: 1;
@@ -1509,7 +1533,7 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  padding: 6px;
+  padding:0 6px;
 }
 
 .queue-btn:hover {

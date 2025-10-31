@@ -23,7 +23,7 @@
     <p>Bản đồ chỉ đường</p>
     <div></div>
   </div>
-  <img src="./assets/map.jpg" alt="VinWonders Nha Trang" class="map">
+ <img id="mapImage" src="./assets/map.jpg" alt="VinWonders Nha Trang" class="map">
   <div class="btn btn-seaworld" title="Sea World">1</div>
   <div class="btn btn-adventure" title="Adventure Land">2</div>
   <div class="btn btn-garden" title="King’s Garden">3</div>
@@ -31,4 +31,47 @@
 </div>
 
 </body>
+
+<script>
+  const map = document.getElementById('mapImage');
+  let scale = 1;
+  let posX = 0, posY = 0;
+  let isDragging = false;
+  let startX, startY;
+
+  // Zoom bằng con lăn chuột
+  map.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    const zoomSpeed = 0.1;
+    if (e.deltaY < 0) scale += zoomSpeed;
+    else scale = Math.max(1, scale - zoomSpeed); // không cho nhỏ hơn kích thước gốc
+    map.style.transform = `scale(${scale}) translate(${posX}px, ${posY}px)`;
+  });
+
+  // Kéo rê ảnh
+  map.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    startX = e.clientX - posX;
+    startY = e.clientY - posY;
+    map.style.cursor = 'grabbing';
+  });
+
+  map.addEventListener('mouseup', () => {
+    isDragging = false;
+    map.style.cursor = 'grab';
+  });
+
+  map.addEventListener('mouseleave', () => {
+    isDragging = false;
+    map.style.cursor = 'grab';
+  });
+
+  map.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    posX = e.clientX - startX;
+    posY = e.clientY - startY;
+    map.style.transform = `scale(${scale}) translate(${posX}px, ${posY}px)`;
+  });
+</script>
+
 </html>
