@@ -1167,23 +1167,28 @@
 
 .map-container {
   position: relative;
-  max-width: 400px; /* kích thước khung hiển thị */
+  max-width: 400px;
   height: 100vh;
   margin: 20px auto;
   border-radius: 10px;
   background-color: #f5cc9e;
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  
+  overflow: hidden; /* ⚠ Giới hạn không cho tràn */
+}
+
+.map-wrapper {
+  width: 100%;
+  height: calc(100% - 40px);
+  overflow: hidden;
+  cursor: grab;
 }
 
 .map {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
-   transform-origin: center center;
-  transition: transform 0.2s ease;
-  cursor: grab;
+  transform-origin: center center;
+  transition: transform 0.1s ease;
 }
 
 .map-head{
