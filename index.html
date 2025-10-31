@@ -238,6 +238,34 @@
             </div>
           </div>
         </div>
+        <div class="virtual-queue-first">
+          <div class="virtual-queue-head">
+            <h2 class="title">Hàng chờ ưu tiên</h2>
+            <!-- <i class="fa-solid fa-circle-exclamation icon"></i> -->
+          </div>
+          <div class="queue-card-first">
+            <div class="queue-content">
+              <p class="queue-text">
+                Tiết kiệm thời gian xếp hàng chờ các trò chơi hấp dẫn
+              </p>
+              <button class="queue-btn" id="joinQueueBtnFirst">Tham gia ngay</button>
+            </div>
+            <img
+              src="./assets/game1.webp"
+              alt="Nhóm khách tham quan"
+              class="queue-img" />
+          </div>
+          <div class="modal" id="infoModal">
+            <div class="modal-content">
+              <span class="close-btn">&times;</span>
+              <h3>Giới thiệu hàng chờ ảo</h3>
+              <p>
+                Xếp hàng chờ ảo - Tiết kiệm thời gian thực: đặc quyền ưu tiên
+                tham gia các trò chơi hot, đem đến trải nghiệm tuyệt vời hơn.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="menu">
         <div class="menuItem">
@@ -318,6 +346,20 @@
           });
         } else {
           console.log("Không tìm thấy joinQueueBtn");
+        }
+      });
+
+       document.addEventListener("DOMContentLoaded", () => {
+        const joinQueueBtnFirst = document.getElementById("joinQueueBtnFirst");
+
+        if (joinQueueBtnFirst) {
+          joinQueueBtnFirst.addEventListener("click", (e) => {
+            e.preventDefault();
+            console.log("Đã bấm nút tham gia");
+            window.location.href = "./game.html"; 
+          });
+        } else {
+          console.log("Không tìm thấy joinQueueBtnFirst");
         }
       });
     </script>

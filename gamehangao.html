@@ -308,10 +308,14 @@
 
         .invoice p,
         .invoice ol li {
+          list-style: none;
           font-size: 14px;
           line-height: 1.4;
         }
-
+       .invoice ol {
+  list-style-type: none;
+  padding-left: 0;
+}
         .barcode {
           height: 40px;
         }
@@ -417,7 +421,7 @@
         <!-- Danh sách nhập tên người chơi -->
         <div id="playerNames"></div>
 
-        <p class="total">Tổng tiền: <span id="totalPrice">100.000</span> đ</p>
+        <!-- <p class="total">Tổng tiền: <span id="totalPrice">100.000</span> đ</p> -->
         <button class="confirm-btn" id="confirmBooking">Xác nhận đặt vé</button>
       </div>
     </div>
@@ -430,7 +434,8 @@
         <p><b>Tên trò chơi:</b> <span id="invoiceName"></span></p>
         <p><b>Khung giờ:</b> <span id="invoiceTime"></span></p>
         <p><b>Số lượng người chơi:</b> <span id="invoiceCount"></span></p>
-        <p><b>Tổng tiền:</b> <span id="invoiceTotal"></span> đ</p>
+          <p><b>Thời gian dự kiến:</b> <span>30 phút</span></p>
+        <!-- <p><b>Tổng tiền:</b> <span id="invoiceTotal"></span> đ</p> -->
         <p><b>Số thứ tự:</b> <span id="invoiceOrder"></span></p>
         <div id="playerList"></div>
         <div class="barcode"></div>
@@ -444,21 +449,21 @@
         {
           id: 1,
           name: "Tàu lượn siêu tốc",
-          time: "09:00 - 10:00",
+          time: "9:00-18:30",
           desc: "Trải nghiệm cảm giác mạnh với đường ray uốn lượn",
-          img: "./assets/hammo.webp",
+          img: "./assets/tau-luon-sieu-toc.jpeg",
         },
         {
           id: 2,
           name: "Vòng quay mặt trời",
-          time: "15:00 - 16:30",
+          time: "9:00 - 19:30",
           desc: "Ngắm toàn cảnh công viên từ trên cao.",
           img: "./assets/slider2.jpg",
         },
         {
           id: 3,
           name: "Thế giới nước",
-          time: "18:30 - 20:00",
+          time: "10:00 - 18:00",
           desc: "Thỏa sức vùng vẫy trong không gian mát lạnh.",
           img: "./assets/slider8.jpg",
         },
@@ -526,7 +531,7 @@
           modalDesc.textContent = currentGame.desc;
           count = 1;
           playerCount.textContent = count;
-          totalPrice.textContent = PRICE_PER_PLAYER.toLocaleString();
+          // totalPrice.textContent = PRICE_PER_PLAYER.toLocaleString();
           renderPlayerInputs();
           bookingModal.style.display = "flex";
         });
@@ -546,7 +551,7 @@
         if (count < MAX_PLAYERS) {
           count++;
           playerCount.textContent = count;
-          totalPrice.textContent = (count * PRICE_PER_PLAYER).toLocaleString();
+          // totalPrice.textContent = (count * PRICE_PER_PLAYER).toLocaleString();
           renderPlayerInputs();
         } else {
           alert("Giới hạn tối đa là 7 người chơi!");
@@ -557,7 +562,7 @@
         if (count > 1) {
           count--;
           playerCount.textContent = count;
-          totalPrice.textContent = (count * PRICE_PER_PLAYER).toLocaleString();
+          // totalPrice.textContent = (count * PRICE_PER_PLAYER).toLocaleString();
           renderPlayerInputs();
         }
       };
@@ -567,7 +572,7 @@
         invoiceName.textContent = currentGame.name;
         invoiceTime.textContent = selectedTime;
         invoiceCount.textContent = count;
-        invoiceTotal.textContent = (count * PRICE_PER_PLAYER).toLocaleString();
+        // invoiceTotal.textContent = (count * PRICE_PER_PLAYER).toLocaleString();
         invoiceOrder.textContent = order;
 
         // Lấy danh sách tên người chơi
@@ -576,7 +581,7 @@
           const name =
             document.getElementById(`playerName${i}`).value.trim() ||
             `Người chơi ${i}`;
-          playersHTML += `<li>${name}</li>`;
+          playersHTML += `<p>${name}</p>`;
         }
         playersHTML += "</ol>";
         playerList.innerHTML = playersHTML;
