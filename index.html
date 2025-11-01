@@ -248,7 +248,9 @@
               <p class="queue-text">
                 Tiết kiệm thời gian xếp hàng chờ các trò chơi hấp dẫn
               </p>
-              <button class="queue-btn" id="joinQueueBtnFirst">Tham gia ngay</button>
+              <button class="queue-btn" id="joinQueueBtnFirst">
+                Tham gia ngay
+              </button>
             </div>
             <img
               src="./assets/game1.webp"
@@ -342,21 +344,21 @@
           joinQueueBtn.addEventListener("click", (e) => {
             e.preventDefault();
             console.log("Đã bấm nút tham gia");
-            window.location.href = "./gamehangao.html"; 
+            window.location.href = "./gamehangao.html";
           });
         } else {
           console.log("Không tìm thấy joinQueueBtn");
         }
       });
 
-       document.addEventListener("DOMContentLoaded", () => {
+      document.addEventListener("DOMContentLoaded", () => {
         const joinQueueBtnFirst = document.getElementById("joinQueueBtnFirst");
 
         if (joinQueueBtnFirst) {
           joinQueueBtnFirst.addEventListener("click", (e) => {
             e.preventDefault();
             console.log("Đã bấm nút tham gia");
-            window.location.href = "./game.html"; 
+            window.location.href = "./game.html";
           });
         } else {
           console.log("Không tìm thấy joinQueueBtnFirst");
@@ -364,5 +366,19 @@
       });
     </script>
     <script src="./main.js"></script>
+    <!-- ========== CHATBOT BÉ VIN ========== -->
+    <link rel="stylesheet" href="./chatbot/chatbot.css" />
+    <div id="chatbot-root"></div>
+    <script>
+      fetch("./chatbot/chatbot.html")
+        .then((res) => res.text())
+        .then((html) => {
+          document.getElementById("chatbot-root").innerHTML = html;
+          const script = document.createElement("script");
+          script.src = "./chatbot/chatbot.js";
+          document.body.appendChild(script);
+        });
+    </script>
+    <!-- ========== END CHATBOT ========== -->
   </body>
 </html>
